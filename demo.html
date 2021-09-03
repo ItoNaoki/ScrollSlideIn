@@ -1,0 +1,138 @@
+<style>
+    /* ------------------- */
+    /* レイアウト */
+    
+    .main_image {
+        width: 100%;
+        height: 500px;
+        margin-bottom: 30px;
+        background-color: #888;
+        font-size: 20px;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .box {
+        width: 300px;
+        height: 300px;
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .box01 {
+        background-color: red;
+        margin-left: auto;
+    }
+    
+    .box02 {
+        background-color: blue;
+        margin-right: auto;
+    }
+    
+    .box03 {
+        background-color: green;
+        margin-left: auto;
+    }
+    
+    .box04 {
+        background-color: purple;
+        margin-right: auto;
+    }
+    
+    .box05 {
+        background-color: orange;
+        margin-left: auto;
+    }
+    
+    .box06 {
+        background-color: yellowgreen;
+        margin-right: auto;
+    }
+    /* ------------------- */
+    /* フェードイン */
+    
+    .slide-in {
+        opacity: 0;
+        transition: transform 1s ease-out, opacity 1s ease-out;
+    }
+    
+    .from-left.slide-in {
+        transform: translateX(-50%);
+    }
+    
+    .from-right.slide-in {
+        transform: translateX(50%);
+    }
+    
+    .slide-in.start {
+        transform: none;
+        opacity: 1;
+        /* animation: rotation 2s ease-out; */
+    }
+    /* ------------------- */
+    /* 回転アニメーション */
+    
+    @keyframes rotation {
+        0% {
+            transform: rotateX(0deg);
+        }
+        100% {
+            transform: rotateX(360deg);
+        }
+    }
+</style>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<script>
+    $(function() {
+        $(window).on('scroll', function() {
+            $('.slide-in').each(function() {
+                let elemTop = $(this).offset().top;
+                let scroll = $(window).scrollTop();
+                let winHeight = $(window).height();
+
+                if (scroll > elemTop - winHeight / 5) {
+                    $(this).addClass('start');
+                }
+            });
+        });
+    });
+</script>
+
+<div class="main_image">
+    メインイメージ
+</div>
+
+<div class="box box01 slide-in from-right">
+    box01
+</div>
+
+<div class="box box02 slide-in from-left">
+    box02
+</div>
+
+<div class="box box03 slide-in from-right">
+    box03
+</div>
+
+<div class="box box04 slide-in from-left">
+    box04
+</div>
+
+<div class="box box05 slide-in from-right">
+    box05
+</div>
+
+<div class="box box06 slide-in from-left">
+    box06
+</div>
